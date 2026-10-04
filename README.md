@@ -54,18 +54,19 @@ python asciivideo.py ~/Videos/clip.mp4 127
 
 ## Architektur
 
-```
-┌────────────────────┐     ┌──────────────────────┐     ┌─────────────────────┐
-│  ffmpeg frames      │────▶│  asciiimage  (Worker) │────▶│  terminal render     │
-│  (JPG → ASCII String)│     │                      │     │  (sys.stdout.flush())│
-└────────────────────┘     └──────────────────────┘     └─────────────────────┘
-         ▲                        ▲                         ▲
-         │                        │                         │
-    ┌─────────┐              ┌─────────┐              ┌─────────────┐
-    │ ffmpeg  │─────────────▶│  queue  │─────────────▶│  audio player│
-    │ audio   │              │ buffer  │              │  (paplay/   │
-    │         │              │         │              │   aplay)    │
-    └─────────┘              └─────────┘              └─────────────┘
+```mermaid
+flowchart LR
+    F["🎬 ffmpeg frames<br/>JPG → ASCII String"] --> A["🔧 asciiimage.py<br/>(Worker-Thread)"]
+    A --> T["📺 terminal render<br/>sys.stdout.flush()"]
+    F2["🔊 ffmpeg audio<br/>pcm_s16le WAV"] --> Q["⏱ queue buffer<br/>maxsize=60"]
+    Q --> P["🔉 audio player<br/>paplay / aplay"]
+    A -.-> Q
+    style F fill:#e8f5e9,stroke:#2e7d32
+    style A fill:#fff3e0,stroke:#e65100
+    style T fill:#e3f2fd,stroke:#1565c0
+    style F2 fill:#e8f5e9,stroke:#2e7d32
+    style Q fill:#fce4ec,stroke:#880e4f
+    style P fill:#fff3e0,stroke:#e65100
 ```
 
 ## Limitierungen
