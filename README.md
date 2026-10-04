@@ -56,13 +56,13 @@ python asciivideo.py ~/Videos/clip.mp4 127
 
 ```
 ┌─────────────────┐     ┌──────────────┐     ┌──────────────────┐
-│  ffmpeg frames  │────▶│  asciiimage   │────▶│  terminal render │
-│  (JPG → String) │     │  (Worker)     │     │  (sys.stdout)    │
+│  ffmpeg frames  │────▶│  asciiimage  │────▶│  terminal render │
+│  (JPG → String) │     │  (Worker)    │     │  (sys.stdout)    │
 └─────────────────┘     └──────────────┘     └──────────────────┘
-         ▲                        ▲                       ▲
-         │                        │                       │
+         ▲                       ▲                       ▲
+         │                       │                       │
     ┌────┴────┐             ┌────┴────┐            ┌─────┴─────┐
-    │  ffmpeg │────────────▶│ queue   │──────────▶│   audio   │
+    │  ffmpeg │────────────▶│ queue   │───────────▶│   audio   │
     │  audio  │             │ buffer  │            │  player   │
     └─────────┘             └─────────┘            └───────────┘
 ```
