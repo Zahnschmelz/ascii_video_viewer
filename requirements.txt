@@ -1,0 +1,4 @@
+# ascii_video_viewer – Python dependencies
+Pillow>=10.0.0
+
+# No other Python packages required – asciivideo.py is stdlib-only.
