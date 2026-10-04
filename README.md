@@ -16,7 +16,7 @@ cd ascii_video_viewer
 | Python 3.10+ | Laufzeit |
 | `ffmpeg` / `ffprobe` | Frame- & Audio-Extraktion |
 | `paplay` oder `aplay` | Audio-Sync (optional) |
-| `asciiimage.py` | Frame → ASCII Konverter (externes Script, standardmäßig unter `~/.local/bin/asciiimage.py`) |
+| `asciiimage.py` | Frame → ASCII Konverter (liegt im Repo) |
 
 ## Usage
 
