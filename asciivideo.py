@@ -19,7 +19,7 @@ except Exception:
 
 
 # Pfad zu deinem optimierten Skript
-ASCII_SCRIPT = "/home/cell0r/.local/bin/asciiimage.py"
+ASCII_SCRIPT = "./asciiimage.py"
 
 
 def get_video_info(video_path):
